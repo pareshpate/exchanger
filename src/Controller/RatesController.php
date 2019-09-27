@@ -54,9 +54,13 @@ class RatesController extends AbstractController
                 $rate->setUpdated(new \DateTime());
                 $entityManager->persist($rate);
                 $entityManager->flush();
+                $this->addFlash(
+                    'success',
+                    'Your changes were added!'
+                );
             } catch (TransportExceptionInterface $e) {
                 $this->addFlash(
-                    'error',
+                    'warning',
                     'Something went wrong while fetching the rates!'
                 );
             }
@@ -89,7 +93,7 @@ class RatesController extends AbstractController
             $entityManager->flush();
             
             $this->addFlash(
-                'notice',
+                'success',
                 'Your changes were added!'
             );
         
@@ -118,7 +122,7 @@ class RatesController extends AbstractController
             $entityManager->flush();
             
             $this->addFlash(
-                'notice',
+                'success',
                 'Your changes were saved!'
             );
             
@@ -142,11 +146,10 @@ class RatesController extends AbstractController
             $entityManager->flush();
             
             $this->addFlash(
-                'notice',
+                'success',
                 'Rate has been deleted!'
             );
         }
-
         return $this->redirectToRoute('rates_index');
     }
 }
