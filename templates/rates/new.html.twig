@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Add Rate{% endblock %}
+
+{% block body %}
+    <h1>Add Rate Form</h1>
+
+    {{ include('rates/_form.html.twig') }}
+
+    <a href="{{ path('rates_index') }}">back to rates list</a>
+{% endblock %}

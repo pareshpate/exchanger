@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Rates index{% endblock %}
+
+{% block body %}
+    <h1>Rates List</h1>
+	<a href="{{ path('rates_refresh_form') }}">Refresh Rate</a>
+	<a href="{{ path('rates_new') }}">Add Rate</a>
+	
+	{{ include('common/error_message.html.twig') }}
+	
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Currency</th>
+                <th>Rate</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rate in rates %}
+            <tr>
+                <td>{{ rate.id }}</td>
+                <td>{{ rate.currency }}</td>
+                <td>{{ rate.rate }}</td>
+                <td>{{ rate.created ? rate.created|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ rate.updated ? rate.updated|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('rates_edit', {'id': rate.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}
