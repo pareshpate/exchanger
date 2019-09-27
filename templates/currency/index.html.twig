@@ -5,32 +5,24 @@
 {% block body %}
     <h1>Currency List</h1>
 	<a href="{{ path('currency_new') }}">Add Currency</a>
-	{{ include('common/error_message.html.twig') }}
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for currency in currencies %}
-            <tr>
-                <td>{{ currency.id }}</td>
-                <td>{{ currency.name }}</td>
-                <td>
-                    <a href="{{ path('currency_show', {'id': currency.id}) }}">show</a>
-                    <a href="{{ path('currency_edit', {'id': currency.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
+	{{ include('common/_flash_messages.html.twig') }}
+	
+	<div class="row">
+      <div class="col">Id</div>
+      <div class="col">Name</div>
+      <div class="col">Actions</div>
+    </div>
     
+{% for currency in currencies %}
+    <div class="row">
+      <div class="col">{{ currency.id }}</div>
+      <div class="col">{{ currency.name }}</div>
+      <div class="col">
+      	<a href="{{ path('currency_show', {'id': currency.id}) }}">show</a>
+        <a href="{{ path('currency_edit', {'id': currency.id}) }}">edit</a>
+      </div>
+    </div>
+     {% else %}
+            <div>no records found</div>
+        {% endfor %}
 {% endblock %}
