@@ -19,3 +19,5 @@ To run the unit test case
 ```bash
 bin/phpunit tests/Controller/RatesControllerTest.php
 ```
+
+Please make sure that you have access to the following API https://api.exchangeratesapi.io/. 
