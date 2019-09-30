@@ -13,7 +13,10 @@ composer install
 bin/console doctrine:migrations:migrate
 ```
 
-Please add the currency details using /currency/new
+To load the currency data using the below command,
+```bash
+bin/console doctrine:fixtures:load
+```
 
 To run the unit test case
 ```bash
